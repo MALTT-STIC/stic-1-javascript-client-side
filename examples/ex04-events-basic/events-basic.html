@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript events</title>
+</head>
+
+<body>
+    <h1>JavaScript events</h1>
+    <p>In the previous example, we changed the content of the page, but it happened at the very moment it had been downloaded. The user could not notice the difference. The interest of JavaScript is mainly to make this kind of changes later on, following what we call an <strong>event</strong>.</p>
+    <p>Events can be associated to many things. In this exemple we will see two kind of events :</p>
+    <ol>
+        <li>vents linked to the page (the window and the DOM)</li>
+        <li>Events linked to the mouse</li>
+    </ol>
+
+    <hr>
+
+    <p>
+        <button id="clickMe">Click to change some content</button>
+    </p>
+
+    <p id="feedback"></p>
+
+    <!-- We put an external resource to slow the window load event -->
+    <img src="screen.png" style="display: none">
+
+    <script>
+        /*
+         * The first event is linked to the window. Actually we are doing the same thing as the previous event, but telling the browser exactly what to do.
+         * In the previous case, the browser automatically decided that the changes we defined should have been done once the page was ready.
+         * As you should be aware at this point, though, it is a bad habit to rely on browser's behaviour. So we define an event that listens to when the window is loaded
+         *
+         */
+
+        //We define the listener to the load event, associated to the window. We pass a function as second argument that must be executed when the event is triggered.
+        window.addEventListener("load", logWindow);
+
+        function logWindow() {
+            console.log("The window has been loaded");
+        }
+
+        //The window comprises all external elements, which can make the loading slow. That is why we can use an alternative with the DOM.
+        document.addEventListener("DOMContentLoaded", logDOM);
+
+        function logDOM() {
+            console.log("The DOM is ready!");
+        }
+
+        //HINT: check the console of the page, you should see the "The DOM is ready" message first, even if the code comes after the window event!
+
+        /*
+         * The second event is linked to the mouse. We will trigger a change in the DOM only once the user click on the button with id "clickMe".
+         * To obtain this behavior, we assign an event handler to this button, providing a function to be called once the event is triggered as it was the case with the window and DOM.
+         *
+         */
+        document.querySelector("#clickMe").addEventListener("click", buttonClickedHandler);
+
+        function buttonClickedHandler() {
+            var now = new Date();
+            var formatDate = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + "." + now.getMilliseconds();
+            document.querySelector("#feedback").innerHTML += "The user has clicked on the button at <strong>" + formatDate + "</strong><br>";
+        }
+    </script>
+
+</body>
+
+</html>

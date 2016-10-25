@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Events basic challenge</title>
+</head>
+
+<body>
+
+    <h1>Events basic challenge</h1>
+
+    <p>Click the button to get the time:
+        <button id="whatTimeIsIt">What time is it?</button>
+    </p>
+    <p id="feedback"></p>
+
+    <script>
+        /*
+         * TASK :
+         * - Add an event listener of type "click" on the button
+         * - Assign to it the given function named timeHandler() and complete the code so that the function :
+         *   a) get the current time and format it in hours:minutes:seconds
+         *   b) replace the content of the feedback paragraph with a message with the current time followed either by "in the morning" or "in the afternoon" depending on the time
+         *
+         * The expected HTML content of the feedback paragraph should look like that : "It is 11:34:08 in the morning"
+         * The message should replace the content of the paragraph at each click;
+         *
+         */
+
+        /* Code here */
+        document.querySelector("#whatTimeIsIt").addEventListener("click", timeHandler);
+
+        //Given function to complete
+        function timeHandler() {
+            var now = new Date();
+            var message = "It is " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+            if (now.getHours() < 12) {
+                message += " in the morning";
+            } else {
+                message += " in the afternoon";
+            }
+            document.querySelector("#feedback").innerHTML = message;
+        }
+    </script>
+</body>
+
+</html>
