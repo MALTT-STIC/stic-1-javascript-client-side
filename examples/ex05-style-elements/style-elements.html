@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Style elements</title>
+    <style>
+        .important {
+            color: darkorange;
+            font-size: 1.4em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Style elements</h1>
+    <p>With JavaScript it is also possible to change the style of elements. You can do that in at least two ways:</p>
+
+    <ol>
+        <li>Using the element.style.<em>property</em> = "<em>value</em>" form</li>
+        <li>Using the element.classList.add() or .remove() methods</li>
+    </ol>
+
+    <p id="styleWithCode">I will be styled directly using the code.</p>
+    <ul>
+        <li>
+            <button id="codeBtn">Change the style with code</button>
+        </li>
+    </ul>
+
+    <p id="styleWithClass">I will be styled using the .important class defined in the head of the document</p>
+
+    <ul>
+        <li>
+            <button id="addClassBtn">Change the style with class</button> |
+            <button id="removeClassBtn">Remove the class</button>
+        </li>
+    </ul>
+    <script>
+        //1. Style with code
+        //In this example we will use an anonymous function with the addEventListener method
+        document.querySelector("#codeBtn").addEventListener("click", function () {
+            //If you want to give more than one style properties, it is useful to hold the element in a variable
+            var myP = document.querySelector("#styleWithCode");
+            //Properties using - shoud be replaced by camelCase
+            myP.style.fontSize = "18px";
+            myP.style.color = "blue";
+        });
+
+        //2. Add a class name
+        //In this example we will use an alternative syntaxe for an event of type "click"
+        document.querySelector("#addClassBtn").onclick = function () {
+            document.querySelector("#styleWithClass").classList.add("important");
+        }
+
+        //3. Remove a class name
+        document.querySelector("#removeClassBtn").addEventListener("click", removeImportantClass);
+
+        function removeImportantClass() {
+            document.querySelector("#styleWithClass").classList.remove("important");
+        }
+    </script>
+</body>
+
+</html>
