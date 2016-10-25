@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOM manipulation</title>
+</head>
+
+<body>
+    <h1>DOM manipulation</h1>
+    <p>Through the window.document (shortened to just document) JavaScript have access to the DOM and it can change the content of the DOM after the page has been loaded.</p>
+
+    <p class="change-me">I will be changed by JavaScript</p>
+    <p class="change-me">I will be changed by JavaScript</p>
+    <p id="unique-p">I also will be changed by JavaScript</p>
+
+    <script>
+        /*
+         * To manipulate the DOM you generally need to :
+         * 1. Identify the elements you want to change
+         * 2. Apply the changes using document.element properties and methods
+         *
+         * There are different methods to identify elements :
+         * - document.getElementById(id);
+         * - document.getElementByClassName(class);
+         * - document.getElementByTagsName(tag);
+         *
+         * In this examples we will use two more powerful methods :
+         * - document.querySelector(css identifier);
+         * - document.querySelectorAll(css identifier);
+         * They are similar, but the first identify just the first element that match the criteria, the second all of them.
+         * querySelectorAll() creates a list of nodes, which is similar (but not identical!) to an array
+         */
+
+        //Select all p of class change-me
+        var ps = document.querySelectorAll("p.change-me");
+        //Iterate through the list of nodes
+        for (var i = 0; i < ps.length; i++) {
+            //Change the innerHTML (i.e. the content) of each node
+            ps[i].innerHTML = "<em>I have been changed by JavaScript</em>";
+        }
+
+        //Select a p with id unique-p and change its innerHTML without using any variable
+        document.querySelector("p#unique-p").innerHTML = "<strong>I have also been changed by JavaScript</strong>";
+    </script>
+</body>
+
+</html>
