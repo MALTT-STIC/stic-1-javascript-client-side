@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Style element challenge</title>
+    <style>
+        button {
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>Style element challenge</h1>
+
+    <p id="determineFont">Change the size of this font through the buttons below.</p>
+    <p>
+        <button id="plus">+</button> |
+        <button id="minus">-</button>
+    </p>
+    <script>
+        //Identify the paragraph
+        var p = document.querySelector("#determineFont");
+        //Determine an initial size
+        var size = 18;
+
+        //Set an initial font on dom loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            p.style.fontSize = size + "px";
+        })
+
+        //Increment
+        document.querySelector("#plus").addEventListener("click", function() {
+            size++;
+            p.style.fontSize = size + "px";
+        })
+
+        //Decrement
+        document.querySelector("#minus").addEventListener("click", function() {
+            size--;
+            p.style.fontSize = size + "px";
+        })
+
+    </script>
+</body>
+
+</html>
