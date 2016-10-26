@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOM advanced</title>
+</head>
+
+<body>
+
+    <h1>DOM advanced</h1>
+
+    <p>In this example we will combine some of the elements of the previous examples to create a quiz about capitals. We will use some advanced features to automatize the quiz.</p>
+
+    <div id="quiz">
+
+    </div>
+
+    <script>
+        /*
+         * In previous examples we had to create and identify every element every time we wanted to ask a question, even if the procedure was very similar.
+         * Now we will use some methods available from the document object to create nodes directly with JavaScript and assign listener to them
+         */
+
+        //Let's start with an array of objects with countries and capitals
+        var countries = [
+            {
+                name: "France",
+                capital: "Paris"
+            },
+            {
+                name: "Switzerland",
+                capital: "Bern"
+            },
+            {
+                name: "Italy",
+                capital: "Rome"
+        }];
+
+        //Let's iterate to the array to create a Q&A for every country.
+        //ATTENTION : maje sure to use LET instead of VAR
+        for (let i = 0; i < countries.length; i++) {
+            //First we want to create a paragraph with the question "What is the capital of xxxx"
+            let question = document.createElement("p");
+            question.innerHTML = "What is the capital of " + countries[i].name + "? ";
+            //Second want to create the input to answer it
+            let answer = document.createElement("input");
+            //Third we need a button to check the answer
+            let button = document.createElement("button");
+            button.innerHTML = "Check your answer";
+            //Fourth, we need a feedback element
+            let feedback = document.createElement("span");
+            //At this point we need to add a listener to the button that checks the answer and provide a feedback
+            button.addEventListener("click", function () {
+                console.log(answer.value.toLowerCase(), countries[i].capital);
+                //Check the answer
+                if (answer.value.toLowerCase() == countries[i].capital.toLowerCase()) {
+                    feedback.innerHTML = "Yes! You got it!";
+                } else {
+                    feedback.innerHTML = "Nope, the right answer was " + countries[i].capital;
+                }
+            });
+
+            //We have all our elements, but we need to inject them into the DOM. First, we put the answer, button and feedback inside the question paragraph
+            question.appendChild(answer);
+            question.appendChild(button);
+            question.appendChild(feedback);
+
+            //Then we need to append the whole of it inside the quiz div
+            document.querySelector("#quiz").appendChild(question);
+
+        }
+    </script>
+</body>
+
+</html>
