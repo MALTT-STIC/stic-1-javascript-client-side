@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>The window global object</title>
+</head>
+
+<body>
+    <h1>The window global object</h1>
+
+    <p>JavaScript has access to the browser and to the page through the window global object. Open the console log for more details about the code in the script tag below.</p>
+
+    <script>
+        //When you create a variable in client side JavaScript, it is as if you add a property to the object window
+        var myVar = "Hello, I am a var";
+        console.log(window.myVar); //-->Hello, I am a var
+
+        //The same with a function
+        function printHello() {
+            console.log("Hello, I am a function");
+        }
+        window.printHello(); //-->Hello, I am a function
+
+        //The window object has some built-in properties/sub-objects
+        var height = window.outerHeight;
+        var width = window.outerHeight;
+        console.log("Your current windows is", height, "x", width, "pixels");
+
+        var currentPath = window.location.pathname;
+        console.log("The current path is", currentPath);
+
+        //Through the window.navigator object you can also access some info about the user's browser'
+        var yourLang = window.navigator.language; //Gives something like fr-FR or en-US
+        if (yourLang.substr(0, 2) == "en") {
+            console.log("Hi there, how do you do?");
+        } else {
+            console.log("Sorry, I don't speak your language!");
+        }
+
+        //Since the window object is global, you can omit it. Every example above will work without window. in front of them.
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Style element challenge</title>
+</head>
+
+<body>
+
+    <h1>Style element challenge</h1>
+
+    <p>What is the capital of France?
+        <button id="franceBtn">Find out!</button>
+    </p>
+    <p id="franceFeedback" style="display:none"><strong>Paris</strong></p>
+    <hr>
+    <p>What is the capital of Italy?
+        <button id="italyBtn">Find out!</button>
+    </p>
+    <p id="italyFeedback" style="display:none"><strong>Rome</strong></p>
+    <hr>
+    <!-- Code here -->
+    <p>What is the capital of Germany?
+        <button id="germanyBtn">Find out!</button>
+    </p>
+    <p id="germanyFeedback" style="display:none"><strong>Berlin</strong></p>
+    <script>
+        /*
+         * TASK :
+         * 1. add event listeners to the two Find out buttons and use style to show the feedback
+         * 2. add another country of your choice providing both HTML and JavaScript code
+         *
+         * HINT : there are different ways to obtain this result
+         *
+         */
+
+        /* Code here */
+        //France
+        document.querySelector("#franceBtn").addEventListener("click", function () {
+            document.querySelector("#franceFeedback").style.display = "block";
+        });
+        //Italy
+        document.querySelector("#italyBtn").addEventListener("click", function () {
+            document.querySelector("#italyFeedback").style.display = "block";
+        });
+        //Country of cour choice
+        document.querySelector("#germanyBtn").addEventListener("click", function () {
+            document.querySelector("#germanyFeedback").style.display = "block";
+        })
+    </script>
+</body>
+
+</html>

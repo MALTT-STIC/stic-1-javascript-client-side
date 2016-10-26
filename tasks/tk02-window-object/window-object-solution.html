@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Window object challenge</title>
+</head>
+
+<body>
+
+    <h1>Window object challenge</h1>
+    <p>To perform this task refer tot his page <a href="http://www.w3schools.com/jsref/obj_window.asp">window object on W3schools</a></p>
+    <script>
+        //Use the window object to get the height and width of the window (without the toolbar/scrollbar)
+        //Then use the given printMeasures() function that will show a message in the HTML page (don't worry if you don't understand that code yet)
+        var height = window.innerHeight;
+        var width = window.innerWidth;
+
+        function printMeasures(h, w) {
+            document.body.innerHTML += "<p>Your windows is " + h + " x " + w + " pixels</p>";
+        }
+
+        printMeasures(height, width);
+    </script>
+</body>
+
+</html>
