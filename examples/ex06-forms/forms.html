@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Forms</title>
+</head>
+
+<body>
+
+    <h1>Forms and fields</h1>
+
+    <p>Forms and fields are useful to obtain data from users. JavaScript can handle them in many ways, both as single fields and the whole form</p>
+
+    <hr>
+
+    <h2>Single fields</h2>
+
+    <p>What is the capital of France?</p>
+    <p>
+        <input id="franceInput">
+        <button id="franceBtn">Check your answer</button> <span id="franceFeedback"></span>
+    </p>
+
+    <hr>
+
+    <h2>Forms with many fields</h2>
+    <p>Fill in the form with the capital and the continent.</p>
+    <form name="rateForm">
+        <p>
+            <input name="capital"> is the capital of France, which is in
+            <input name="continent">
+        </p>
+        <input type="submit" value="Check your answers">
+    </form>
+    <p id="formFeedback"></p>
+    <script>
+        /* Single fields */
+        document.querySelector("#franceBtn").addEventListener("click", function () {
+            //Identify the field and get its value using element.value notation
+            var reply = document.querySelector("#franceInput").value;
+            var feedback = document.querySelector("#franceFeedback");
+            //Check if the answer is correct (we transform it first to lowercase so that the answer matches PARIS, paris, Paris, etc.)
+            if (reply.toLowerCase() == "paris") {
+                feedback.innerHTML = "Yes! You got it!"
+            } else {
+                feedback.innerHTML = "Nope, the correct answer is Paris";
+            }
+        });
+
+        /* Form */
+        //You can identify a form by its name in the document.forms object
+        document.forms.rateForm.addEventListener("submit", checkAnswers);
+
+        function checkAnswers(event) {
+            var points = "0";
+            //Since normally a form will reload the page, we must prevent it
+            event.preventDefault();
+            //Now we check the answers using the name of the field
+            if (document.forms.rateForm.capital.value.toLowerCase() == "paris") {
+                points++;
+            }
+            if (document.forms.rateForm.continent.value.toLowerCase() == "europe") {
+                points++;
+            }
+            document.querySelector("#formFeedback").innerHTML = "You scored " + points + " out of 2";
+        }
+    </script>
+</body>
+
+</html>
